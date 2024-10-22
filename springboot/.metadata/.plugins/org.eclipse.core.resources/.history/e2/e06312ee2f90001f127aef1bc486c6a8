@@ -1,0 +1,16 @@
+package kr.co.react.config;  // 패키지명은 프로젝트에 맞게 수정
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+@Configuration
+public class WebConfig implements WebMvcConfigurer {
+	@Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        // React Router를 위한 설정
+        registry.addViewController("/**")
+                .setViewName("forward:/index.html");
+    }
+}

@@ -1,0 +1,33 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+<script>
+	$(function() {
+		$('#btn1').click(function() {
+			$('#img').fadeToggle(300);
+		})
+	})
+</script>
+</head>
+<body>
+<input type="button" id="btn1" value="숨기기">
+<input type="button" id="btn2" value="보이기">
+<hr>
+<img src="1-1.jpg" id="img">
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,88 @@
+
+7월 19, 2024 10:00:04.691 NEW SESSION
+7월 19, 2024 10:00:04.691 Created TensorFlow Lite XNNPACK delegate for CPU.
+
+7월 23, 2024 10:15:35.562 NEW SESSION
+7월 23, 2024 10:15:35.562 Created TensorFlow Lite XNNPACK delegate for CPU.
+7월 23, 2024 14:48:01.512 [13564:7184:0723/144801.512:ERROR:CONSOLE(1)] "SyntaxError: Unexpected token (1:0)", source: devtools://devtools/bundled/devtools-frontend/front_end/entrypoints/formatter_worker/formatter_worker.js (1)
+7월 23, 2024 16:47:47.840 [13564:7184:0723/164747.839:ERROR:CONSOLE(1)] "Request Network.loadNetworkResource failed. {"code":-32602,"message":"Unsupported URL scheme"}", source: devtools://devtools/bundled/devtools-frontend/front_end/core/protocol_client/protocol_client.js (1)
+7월 23, 2024 16:47:48.989 [13564:7184:0723/164748.988:ERROR:CONSOLE(1)] "Request Page.reload failed. {"code":-32602,"message":"Reload was discarded because the page already navigated"}", source: devtools://devtools/bundled/devtools-frontend/front_end/core/protocol_client/protocol_client.js (1)
+7월 23, 2024 16:47:56.817 [13564:7184:0723/164756.817:ERROR:CONSOLE(1)] "Request Network.loadNetworkResource failed. {"code":-32602,"message":"Unsupported URL scheme"}", source: devtools://devtools/bundled/devtools-frontend/front_end/core/protocol_client/protocol_client.js (1)
+7월 23, 2024 16:48:13.66 [13564:7184:0723/164813.066:ERROR:CONSOLE(1)] "Request Network.loadNetworkResource failed. {"code":-32602,"message":"Unsupported URL scheme"}", source: devtools://devtools/bundled/devtools-frontend/front_end/core/protocol_client/protocol_client.js (1)
+
+7월 24, 2024 09:47:51.474 NEW SESSION
+7월 24, 2024 09:47:51.475 Created TensorFlow Lite XNNPACK delegate for CPU.
+7월 24, 2024 17:29:16.208 Created TensorFlow Lite XNNPACK delegate for CPU.
+
+7월 24, 2024 17:55:01.513 NEW SESSION
+7월 24, 2024 17:55:01.513 Created TensorFlow Lite XNNPACK delegate for CPU.
+
+7월 25, 2024 10:03:27.185 NEW SESSION
+7월 25, 2024 10:03:27.185 Created TensorFlow Lite XNNPACK delegate for CPU.
+7월 25, 2024 12:14:01.382 [2544:6184:0725/121401.380:ERROR:CONSOLE(1)] "Request Page.reload failed. {"code":-32602,"message":"Document already navigated"}", source: devtools://devtools/bundled/devtools-frontend/front_end/core/protocol_client/protocol_client.js (1)
+7월 25, 2024 12:25:36.651 [2544:6184:0725/122536.651:ERROR:CONSOLE(1)] "Request Page.reload failed. {"code":-32602,"message":"Document already navigated"}", source: devtools://devtools/bundled/devtools-frontend/front_end/core/protocol_client/protocol_client.js (1)
+
+7월 26, 2024 09:37:03.364 NEW SESSION
+7월 26, 2024 09:37:03.364 Created TensorFlow Lite XNNPACK delegate for CPU.
+7월 26, 2024 10:12:42.264 [0726/101242.262:ERROR:filesystem_win.cc(128)] GetFileAttributes C:\Users\EZEN\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\2666041d-f3af-4120-a99d-daa9619c9f12: 吏��젙�맂 �뙆�씪�쓣 李얠쓣 �닔 �뾾�뒿�땲�떎. (0x2)
+7월 26, 2024 10:12:42.264 [0726/101242.264:ERROR:filesystem_win.cc(128)] GetFileAttributes C:\Users\EZEN\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\2666041d-f3af-4120-a99d-daa9619c9f12: 吏��젙�맂 �뙆�씪�쓣 李얠쓣 �닔 �뾾�뒿�땲�떎. (0x2)
+7월 26, 2024 11:07:06.341 [13400:9172:0726/110706.341:ERROR:CONSOLE(0)] "Blocked aria-hidden on a <button> element because the element that just received focus must not be hidden from assistive technology users. Avoid using aria-hidden on a focused element or its ancestor. Consider using the inert attribute instead, which will also prevent focus. For more details, see the aria-hidden section of the WAI-ARIA specification at https://w3c.github.io/aria/#aria-hidden.", source: devtools://devtools/bundled/devtools_app.html?remoteBase=https://chrome-devtools-frontend.appspot.com/serve_file/@9755e24ca85aa18ffa16c743f660a3d914902775/&can_dock=true&panel=elements&targetType=tab&veLogging=true&enableAida=true&aidaTemperature=0.2&ci_blockedByAge=true (0)
+7월 26, 2024 17:24:27.534 [13400:9172:0726/172427.533:ERROR:CONSOLE(0)] "Blocked aria-hidden on a <button> element because the element that just received focus must not be hidden from assistive technology users. Avoid using aria-hidden on a focused element or its ancestor. Consider using the inert attribute instead, which will also prevent focus. For more details, see the aria-hidden section of the WAI-ARIA specification at https://w3c.github.io/aria/#aria-hidden.", source: devtools://devtools/bundled/devtools_app.html?remoteBase=https://chrome-devtools-frontend.appspot.com/serve_file/@9755e24ca85aa18ffa16c743f660a3d914902775/&can_dock=true&targetType=tab&veLogging=true&enableAida=true&aidaTemperature=0.2&ci_blockedByAge=true (0)
+
+7월 29, 2024 09:37:28.279 NEW SESSION
+7월 29, 2024 09:37:28.279 Created TensorFlow Lite XNNPACK delegate for CPU.
+
+7월 30, 2024 09:41:55.319 NEW SESSION
+7월 30, 2024 09:41:55.319 Created TensorFlow Lite XNNPACK delegate for CPU.
+
+7월 31, 2024 09:33:44.188 NEW SESSION
+7월 31, 2024 09:33:44.188 Created TensorFlow Lite XNNPACK delegate for CPU.
+7월 31, 2024 09:35:37.548 [1880:1244:0731/093537.547:ERROR:interface_endpoint_client.cc(722)] Message 1 rejected by interface blink.mojom.WidgetHost
+7월 31, 2024 10:15:09.444 [1880:1244:0731/101509.444:ERROR:device_event_log_impl.cc(196)] [10:15:09.443] USB: usb_service_win.cc:105 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: �슂�냼媛� �뾾�뒿�땲�떎. (0x490)
+
+8월 01, 2024 09:29:03.495 NEW SESSION
+8월 01, 2024 09:29:03.495 Created TensorFlow Lite XNNPACK delegate for CPU.
+
+8월 02, 2024 09:13:34.287 NEW SESSION
+8월 02, 2024 09:13:34.287 Created TensorFlow Lite XNNPACK delegate for CPU.
+
+8월 06, 2024 09:12:05.311 NEW SESSION
+8월 06, 2024 09:12:05.311 Created TensorFlow Lite XNNPACK delegate for CPU.
+
+8월 07, 2024 09:48:59.727 NEW SESSION
+8월 07, 2024 09:48:59.727 Created TensorFlow Lite XNNPACK delegate for CPU.
+
+8월 08, 2024 09:43:02.343 NEW SESSION
+8월 08, 2024 09:43:02.343 Created TensorFlow Lite XNNPACK delegate for CPU.
+8월 08, 2024 10:26:49.726 Created TensorFlow Lite XNNPACK delegate for CPU.
+
+8월 09, 2024 09:36:42.889 NEW SESSION
+8월 09, 2024 09:36:42.889 Created TensorFlow Lite XNNPACK delegate for CPU.
+
+8월 09, 2024 14:51:32.696 NEW SESSION
+8월 09, 2024 14:51:32.696 Created TensorFlow Lite XNNPACK delegate for CPU.
+
+8월 13, 2024 09:16:29.561 NEW SESSION
+8월 13, 2024 09:16:29.561 Created TensorFlow Lite XNNPACK delegate for CPU.
+
+8월 19, 2024 10:03:26.730 NEW SESSION
+8월 19, 2024 10:03:26.730 Created TensorFlow Lite XNNPACK delegate for CPU.
+
+10월 08, 2024 09:16:48.479 NEW SESSION
+10월 08, 2024 09:16:48.479 Created TensorFlow Lite XNNPACK delegate for CPU.
+10월 08, 2024 09:20:42.186 [4484:4468:1008/092042.186:ERROR:CONSOLE(1)] "Unknown VE context: elements.image-preview", source: devtools://devtools/bundled/devtools-frontend/front_end/ui/visual_logging/visual_logging.js (1)
+10월 08, 2024 09:20:42.195 [4484:4468:1008/092042.195:ERROR:CONSOLE(1)] "Unknown VE context: elements.image-preview", source: devtools://devtools/bundled/devtools-frontend/front_end/ui/visual_logging/visual_logging.js (1)
+10월 08, 2024 09:20:42.220 [4484:4468:1008/092042.220:ERROR:CONSOLE(1)] "Unknown VE context: elements.image-preview", source: devtools://devtools/bundled/devtools-frontend/front_end/ui/visual_logging/visual_logging.js (1)
+10월 08, 2024 09:20:42.224 [4484:4468:1008/092042.224:ERROR:CONSOLE(1)] "Unknown VE context: elements.image-preview", source: devtools://devtools/bundled/devtools-frontend/front_end/ui/visual_logging/visual_logging.js (1)
+10월 08, 2024 09:20:42.249 [4484:4468:1008/092042.249:ERROR:CONSOLE(1)] "Unknown VE context: elements.image-preview", source: devtools://devtools/bundled/devtools-frontend/front_end/ui/visual_logging/visual_logging.js (1)
+10월 08, 2024 09:20:42.276 [4484:4468:1008/092042.275:ERROR:CONSOLE(1)] "Unknown VE context: elements.image-preview", source: devtools://devtools/bundled/devtools-frontend/front_end/ui/visual_logging/visual_logging.js (1)
+10월 08, 2024 09:20:54.533 [4484:4468:1008/092054.533:ERROR:CONSOLE(1)] "Unknown VE context: elements.image-preview", source: devtools://devtools/bundled/devtools-frontend/front_end/ui/visual_logging/visual_logging.js (1)
+10월 08, 2024 09:20:54.547 [4484:4468:1008/092054.547:ERROR:CONSOLE(1)] "Unknown VE context: elements.image-preview", source: devtools://devtools/bundled/devtools-frontend/front_end/ui/visual_logging/visual_logging.js (1)
+10월 08, 2024 09:20:54.573 [4484:4468:1008/092054.573:ERROR:CONSOLE(1)] "Unknown VE context: elements.image-preview", source: devtools://devtools/bundled/devtools-frontend/front_end/ui/visual_logging/visual_logging.js (1)
+10월 08, 2024 09:20:54.595 [4484:4468:1008/092054.595:ERROR:CONSOLE(1)] "Unknown VE context: elements.image-preview", source: devtools://devtools/bundled/devtools-frontend/front_end/ui/visual_logging/visual_logging.js (1)
+10월 08, 2024 09:20:54.603 [4484:4468:1008/092054.603:ERROR:CONSOLE(1)] "Unknown VE context: elements.image-preview", source: devtools://devtools/bundled/devtools-frontend/front_end/ui/visual_logging/visual_logging.js (1)
+10월 08, 2024 09:20:54.733 [4484:4468:1008/092054.733:ERROR:CONSOLE(1)] "Unknown VE context: elements.image-preview", source: devtools://devtools/bundled/devtools-frontend/front_end/ui/visual_logging/visual_logging.js (1)
+10월 08, 2024 09:20:54.753 [4484:4468:1008/092054.753:ERROR:CONSOLE(1)] "Unknown VE context: elements.image-preview", source: devtools://devtools/bundled/devtools-frontend/front_end/ui/visual_logging/visual_logging.js (1)
+10월 08, 2024 09:20:54.762 [4484:4468:1008/092054.762:ERROR:CONSOLE(1)] "Unknown VE context: elements.image-preview", source: devtools://devtools/bundled/devtools-frontend/front_end/ui/visual_logging/visual_logging.js (1)
+10월 08, 2024 09:20:54.774 [4484:4468:1008/092054.773:ERROR:CONSOLE(1)] "Unknown VE context: elements.image-preview", source: devtools://devtools/bundled/devtools-frontend/front_end/ui/visual_logging/visual_logging.js (1)
+10월 08, 2024 09:20:56.656 [4484:4468:1008/092056.655:ERROR:CONSOLE(1)] "Unknown VE context: elements.image-preview", source: devtools://devtools/bundled/devtools-frontend/front_end/ui/visual_logging/visual_logging.js (1)

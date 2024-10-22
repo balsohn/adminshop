@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/layoutOne/default">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<th:block layout:fragment="content">
+		<section>
+			이름 : 홍길동 <p>
+			나이 : 33 <p>
+			주소 : 울릉도 <p>
+			
+			<div th:insert="/layoutOne/test::one"></div>
+			<div th:replace="/layoutOne/test::two"></div>
+		</section>
+	</th:block>
+</body>
+</html>

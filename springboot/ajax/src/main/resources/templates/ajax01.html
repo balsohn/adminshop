@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	function go() {
+		var chk=new XMLHttpRequest();
+		chk.onload=function() {
+			document.getElementById("text").innerText=chk.responseText;
+		}
+		chk.open("get","/ajaxOk");
+		chk.send();
+	}
+</script>
+</head>
+<body> <!-- ajax01.html -->
+<input type="button" onclick="go()" value="클릭">
+<div id="text"></div>
+</body>
+</html>

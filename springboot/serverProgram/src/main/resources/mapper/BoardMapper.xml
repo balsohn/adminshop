@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.serverProgram.mapper.BoardMapper">
+	<select id="list" resultType="kr.co.serverProgram.dto.BoardDTO">
+		select * from pageboard
+		order by id desc
+		limit #{index},10
+	</select>
+	<select id="getChong" resultType="int">
+		select ceil(count(*)/10) from pageboard
+	</select>
+	<update id="readnum">
+		update pageboard set readnum=readnum+1
+		where id=#{id}
+	</update>
+	<select id="content" resultType="kr.co.serverProgram.dto.BoardDTO">
+		select * from pageboard
+		where id=#{id}
+	</select>
+	<insert id="writeOk">
+		insert into pageboard (title,name,content,fname,writeday)
+		values (#{title},#{name},#{content},#{fname},now())
+	</insert>
+	<delete id="delete">
+		delete from pageboard
+		where id=#{id}
+	</delete>
+	<update id="updateOk">
+		update pageboard set
+		title=#{title}, content=#{content}, fname=#{fname}
+		where id=#{id}
+	</update>
+</mapper>

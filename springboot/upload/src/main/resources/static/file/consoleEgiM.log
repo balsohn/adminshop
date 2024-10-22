@@ -1,0 +1,12 @@
+Message: Uncaught (in promise) NavigationDuplicated: Navigating to current location ("/home/update") is not allowed
+Source: file:///C:/Program%20Files/SketchUp/SketchUp%202021/welcomescreen/regularlaunchpage.bundle.js
+Line: 27
+-----------------------
+Message: Uncaught (in promise) NavigationDuplicated: Navigating to current location ("/home") is not allowed
+Source: file:///C:/Program%20Files/SketchUp/SketchUp%202021/welcomescreen/regularlaunchpage.bundle.js
+Line: 27
+-----------------------
+Message: Uncaught (in promise) NavigationDuplicated: Navigating to current location ("/home/update") is not allowed
+Source: file:///C:/Program%20Files/SketchUp/SketchUp%202021/welcomescreen/regularlaunchpage.bundle.js
+Line: 27
+-----------------------

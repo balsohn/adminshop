@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.oracle.BoardMapper">
+	<insert id="writeOk" parameterType="kr.co.oracle.BoardDTO">
+		insert into board
+		(id,title,content,name,pwd)
+		values (bid.nextval, #{title}, #{content}, #{name}, #{pwd})
+	</insert>
+	<select id="list" resultType="kr.co.oracle.BoardDTO">
+        SELECT *
+        FROM (
+            SELECT a.*, ROWNUM rnum
+            FROM (
+                SELECT *
+                FROM board
+                ORDER BY id
+            ) a
+            WHERE ROWNUM <![CDATA[<=]]> #{page} * 10
+        )
+        WHERE rnum <![CDATA[>]]> (#{page} - 1) * 10
+	</select>
+	<select id="content" resultType="kr.co.oracle.BoardDTO">
+		select * from board
+		where id=#{id}
+	</select>
+	<update id="readnum">
+		update board set readnum=readnum+1
+		where id=#{id}
+	</update>
+	<select id="isWrite" resultType="int">
+	  select count(*) from board
+	  where id = #{id} and name = #{name} and TRIM(pwd)=#{pwd}
+	</select>
+	<delete id="delete">
+		delete from board
+		where id=#{id}
+	</delete>
+	<select id="getChong" resultType="int">
+		select ceil(count(*)/10) from board
+	</select>
+</mapper>

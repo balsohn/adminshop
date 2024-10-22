@@ -1,0 +1,10 @@
+package kr.co.miniIntra;
+
+import org.apache.ibatis.annotations.Mapper;
+
+@Mapper
+public interface MiniMapper {
+
+	public boolean isSawon(String string, String string2);
+
+}

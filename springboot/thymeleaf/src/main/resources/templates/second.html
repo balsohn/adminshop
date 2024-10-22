@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body> <!-- seoncd.html -->
+	<img src="/static/1.jpg" width="100">
+	
+	<!-- model을 통해서 요소의 속성을 가져올때 -->
+	<img th:src="${'/static/'+pimg}" th:width="${width}" th:height="${height}">
+	
+	<hr>
+	<input type="text" name="name" th:value="${name}">
+	<a th:href="${third}" th:text="${third}"></a>
+	
+</body>
+</html>

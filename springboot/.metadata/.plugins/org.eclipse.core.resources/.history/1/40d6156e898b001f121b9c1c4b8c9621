@@ -1,0 +1,15 @@
+package kr.co.miniIntra;
+
+import java.util.ArrayList;
+
+import org.apache.ibatis.annotations.Mapper;
+
+@Mapper
+public interface MiniMapper {
+
+	public int isSawon(String sabun, String pwd);
+	public ArrayList<BoardVo> list(int grp);
+	public void writeOk(BoardVo bvo);
+	public int getChong(int grp);
+
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>	<!-- first.html -->
+	첫페이지 입니다. <p>
+	<div th:text="홍길동"></div>
+	<div> 배트맨 </div>
+	
+	<!-- model을 통해 전달되는 값을 출력 -->
+	<div th:text="${name}"/>
+	<span th:text="${name}"/>
+	<div th:text="${name}">안녕하세요</div>
+	
+	<!-- 전달되는 값에 태그를 포함 -->
+	<div th:text="${juso}"></div>
+	<div th:utext="${juso}"></div>
+	
+	<!-- model을 통해 전달되는 값 + 텍스트 -->
+	<div th:utext="${juso}"> : 울릉도</div>
+	<div th:utext="${juso+':울릉도'}"></div>
+	
+	<!-- model에서 전달된 값을 th없이 출력하고자 할때 -->
+	<div>[[${name}]]</div>
+	<div>[[${juso}]]</div>
+	<div>[(${juso})]</div>
+	<a href="second" th:utext="${juso}"></a>
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/default">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+    }
+    .content-wrapper {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: white;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    th, td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+    th {
+        background-color: #4CAF50;
+        color: white;
+    }
+    tr:hover {
+        background-color: #f5f5f5;
+    }
+    .add-button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        margin-top: 20px;
+    }
+    #sawonChuga {
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 300px;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    #sawonChuga form {
+        display: flex;
+        flex-direction: column;
+    }
+    #sawonChuga select, #sawonChuga input[type="text"] {
+        margin-bottom: 10px;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+    #sawonChuga input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    #sawonChuga input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+    
+    #sawonChuga .form-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+
+    #sawonChuga .close-btn {
+        background: none;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        color: #333;
+    }
+
+    #sawonChuga .form-buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 15px;
+    }
+
+    #sawonChuga .cancel-btn {
+        background-color: #f44336;
+        color: white;
+        border: none;
+        padding: 10px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    #sawonChuga .cancel-btn:hover {
+        background-color: #d32f2f;
+    }
+
+    #sawonChuga h3 {
+        margin: 0;
+    }
+</style>
+<script>
+	window.onload=function() {
+		dayCal();
+	}
+
+	
+	function dayCal() {
+		var year=document.getElementById("year").value;
+		var month=document.getElementById("month").value;
+		var day=document.getElementById("day");
+		
+		var chongDay=new Date(year,month,0).getDate();
+		
+		day.innerHTML="";
+		
+		for(i=1;i<=chongDay; i++) {
+			var option=document.createElement("option");
+			option.value=i;
+			option.text=i<10?'0'+i:i;
+			day.add(option);
+		}
+	}
+	
+	function addSawon(event) {
+		event.preventDefault();
+		
+		var year=document.getElementById("year").value;
+		var month=document.getElementById("month").value;
+		var day=document.getElementById("day").value;
+		var ipsa=year+"-"+month.padStart(2,"0")+"-"+day.padStart(2,"0");
+		var depart=document.getElementById("depart").value;
+		var level=document.getElementById("level").value;
+		var name=document.getElementById("name").value;
+		var phone=document.getElementById("phone").value;
+		var email=document.getElementById("email").value;
+		
+		fetch(`/sawonList`,{
+			method:"POST",
+			headers:{"Content-Type":"application/json"},
+			body:JSON.stringify({
+				depart:depart,
+				level:level,
+				name:name,
+				email:email,
+				phone:phone,
+				ipsa:ipsa
+			})
+		})
+		.then(response => response.json())
+		.then(data => {
+			if(data.success) {
+				alert("사원이 성공적으로 추가 되었습니다.\n"+"사원번호 : "+data.sabun);
+				location.reload();
+			} else {
+				alert("사원 등록에 실패했습니다."  + data.message);
+			}
+		})
+		.catch(error => {
+			console.error('Error', error);
+			alert("오류발생");
+		})
+		
+	}
+	
+	
+	function chugaSawon() {
+        document.getElementById('sawonChuga').style.display = 'block';
+    }
+
+    function closeSawonChuga() {
+        document.getElementById('sawonChuga').style.display = 'none';
+    }
+    
+    function deleteSawon(a) {
+    	alert(a);
+    }
+</script>
+</head>
+<body>
+	    <section layout:fragment="content" class="content-wrapper">
+        <h2>[[${part}]] 관리</h2>
+        <table>
+            <tr>
+                <th>사원번호</th>
+                <th>이름</th>
+                <th>전화번호</th>
+                <th>이메일</th>
+                <th>입사일</th>
+                <th>등급</th>
+            </tr>
+            <tr th:each="sawon:${slist}">
+                <td><a href="#" th:attr="onclick=|deleteSawon('${sawon.sabun}')|" th:text="${sawon.sabun}"></a></a></td>
+                <td th:text="${sawon.name}"/>
+                <td th:text="${sawon.phone}"/>
+                <td th:text="${sawon.email}"/>
+                <td th:text="${sawon.ipsa}"/>
+                <td th:text="${sawon.level}"/>
+            </tr>
+        </table>
+        <a href="javascript:chugaSawon()" class="add-button">사원추가</a>
+        
+        <div id="sawonChuga" style="display: none;">
+            <form onsubmit="return addSawon(event)">
+                <select name="depart" id="depart">
+                    <option value="">부서 선택</option>
+                    <option value="s01">총무부</option>
+                    <option value="s02">자재부</option>
+                    <option value="s03">영업부</option>
+                    <option value="s04">감사부</option>
+                </select>
+                <select name="level" id="level">
+                    <option value="10">일반사원</option>
+                    <option value="30">주임</option>
+                    <option value="50">과장</option>
+                    <option value="70">부장</option>
+                </select>
+                <div>
+                    <select id="year" name="year">
+                        <option th:each="i : ${#numbers.sequence(#dates.year(#dates.createNow()), #dates.year(#dates.createNow())-20)}"
+                                th:value="${i}" th:text="${i}">
+                        </option>
+                    </select>
+                    <select name="month" id="month" onchange="dayCal()">
+                        <option th:each="month : ${#numbers.sequence(1, 12)}"
+                                th:value="${month}" 
+                                th:text="${#strings.prepend(month, month < 10 ? '0' : '')}">
+                        </option>
+                    </select>
+                    <select id="day" name="day"></select>
+                </div>
+                <input type="text" name="name" id="name" placeholder="이름">
+                <input type="text" name="phone" id="phone" placeholder="전화번호">
+                <input type="text" name="email" id="email" placeholder="이메일">
+                <div class="form-buttons">
+		            <input type="submit" value="사원 등록">
+		            <button type="button" onclick="closeSawonChuga()" class="cancel-btn">취소</button>
+		        </div>
+            </form>
+        </div>
+    </section>
+</body>
+</html>

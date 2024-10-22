@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybats-3-mapper.dtd">
+
+<mapper namespace="kr.co.pension.dao.MemberDAO">
+	<select id="useridChk" resultType="String">
+		select count(*) from member
+		where userid=#{param1}
+	</select>
+	<insert id="memberOk">
+		insert into member (userid, name, pwd, email, phone, writeday)
+		values (#{userid}, #{name}, #{pwd}, #{email}, #{phone}, now())
+	</insert>
+	<select id="loginOk" resultType="int">
+		select count(*) from member where
+		userid=#{userid} and pwd=#{pwd}
+	</select>
+</mapper>

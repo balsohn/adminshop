@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body> <!-- fourth.html -->
+	<div th:text="${sung==1?'남자':'여자'}"></div>
+	
+	<!-- chk값이 1일경우에는 '1입니다.' -->
+	<!-- chk값이 1이 아닐경우 '1이 아닙니다.' -->
+	<!-- else가 존재한다. -->
+	<div th:if="${chk==1}">1입니다.</div>
+	<div th:if="${chk!=1}">1이 아닙니다.</div>
+	<div th:unless="${chk==2}">1이 아닙니다.</div>
+	<hr>
+	<!-- block을 이용하기 -->
+	<th:block th:if="${food==1}">
+		<div>비빔밥</div>
+		<div>갈비탕</div>
+		<div>육개장</div>
+	</th:block>
+	<th:block th:if="${food==2}">
+		<div>짜장면</div>
+		<div>짬뽕</div>
+		<div>탕수육</div>
+	</th:block>
+	<th:block th:if="${food==3}">
+		<div>라멘</div>
+		<div>초밥</div>
+		<div>야끼</div>
+	</th:block>
+	<hr>
+	<!-- switch -->
+	<th:block th:switch="${num}">
+		<div th:case="1">울릉도</div>
+		<div th:case="2">독도</div>
+		<div th:case="3">만재도</div>
+		<div th:case="4">거가도</div>
+		<div th:case="*">영도</div>
+	</th:block>
+	
+	<!-- 특정블럭 내부에 지역변수 만들기 -->
+	<th:block th:with="kor=99,eng=88,mat=77">
+		국어 : <span th:text="${kor}"/> <p>
+		영어 : <span th:text="${eng}"/> <p>
+		수학 : <span th:text="${mat}"/> <p>
+	</th:block>
+</body>
+</html>

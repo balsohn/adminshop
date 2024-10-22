@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.thboard.BoardMapper">
+	<select id="list" resultType="kr.co.thboard.BoardDTO">
+		select * from board
+		order by id desc
+		limit #{index},10
+	</select>
+	<select id="getChong" resultType="int">
+		select ceil(count(*)/10) from board
+	</select>
+	<update id="readnum">
+		update board set 
+		readnum=readnum+1
+		where id=#{id}
+	</update>
+	<select id="content" resultType="kr.co.thboard.BoardDTO">
+		select * from board
+		where id=#{id}
+	</select>
+	<insert id="writeOk">
+		insert into board
+		(title,name,pwd,content,writeday)
+		values (#{title}, #{name}, #{pwd}, #{content}, now())
+	</insert>
+	<select id="isWrite" resultType="boolean">
+		select count(*) from board
+		where id=#{id} and name=#{name} and pwd=#{pwd}
+	</select>
+	<delete id="delete">
+		delete from board
+		where id=#{id}
+	</delete>
+	<update id="updateOk">
+		update board set
+		content=#{content}, title=#{title}
+		where id=#{id}
+	</update>
+</mapper>

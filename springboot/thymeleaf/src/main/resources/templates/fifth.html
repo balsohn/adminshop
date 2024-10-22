@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head> <!-- fifth.html -->
+<body>
+	<table width="500" align="center">
+		<tr>
+			<td>번호</td>
+			<td>이름</td>
+			<td>주소</td>
+			<td>나이</td>
+		</tr>
+		<tr th:each="person,sts:${mdto}">
+			<td th:text="${sts.count}"></td>
+			<td th:text="${person.name}"></td>
+			<td th:text="${person.juso}"></td>
+			<td th:text="${person.age}"/>
+		</tr>
+	</table>
+	
+	
+	<!-- 시작값, 최종값을 이용한 each -->
+	<th:block th:each="num:${#numbers.sequence(0,10,1)}">
+	<div th:text="${num}"></div>
+	</th:block>
+	
+	<select>
+		<th:block th:each="i:${#numbers.sequence(0,31,1)}">
+		<option th:text="${i}"></option>
+		</th:block>
+	</select>
+	
+	<select>
+		<th:block th:each="i:${#numbers.sequence(2024,1900,-1)}">
+		<option th:text="${i}"></option>
+		</th:block>
+	</select>
+</body>
+</html>

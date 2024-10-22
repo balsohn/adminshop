@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<script src="static/My1.js"></script>
+</head>
+<body> <!-- list.html -->
+	<table>
+		<tr>
+			<th>제목</th>
+			<th>작성자</th>
+			<th>조회수</th>
+			<th>작성일</th>
+		</tr>
+		<tr th:each="list:${blist}">
+			<td>
+				<a th:href="@{readnum(id=${list.id},page=${page})}" th:text="${list.title}"></a>
+			</td>
+			<td th:text="${list.name}"></td>
+			<td th:text="${list.readnum}"></td>
+			<td th:text="${list.writeday}"></td>
+		</tr>
+		<tr>
+			<td colspan="4">
+				<a th:if="${pstart!=1}" th:href="@{list(page=1)}" th:text="처음"></a>
+				<a th:if="${pstart!=1}" th:href="@{list(page=${pstart-1})}" th:text="이전"></a>
+				<th:block th:each="i:${#numbers.sequence(pstart,pend)}">
+				<a th:href="@{list(page=${i})}" th:text="${i}"/>
+				</th:block>
+				<a th:if="${pend!=chong}" th:href="@{list(page=${pend+1})}" th:text="다음"></a>
+				<a th:if="${pend!=chong}" th:href="@{list(page=${chong})}" th:text="마지막"></a>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="4" align="right">
+				<a href="write">글쓰기</a>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

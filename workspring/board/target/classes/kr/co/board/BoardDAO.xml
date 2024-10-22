@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybats-3-mapper.dtd">
+
+<mapper namespace="kr.co.board.BoardDAO">
+	<select id="list" resultType="kr.co.board.BoardDTO">
+		select * from pageboard order by id desc limit 20
+	</select>
+	<insert id="writeOk">
+		insert into pageboard (name,pwd,title,content,writeday)
+		values (#{name},#{pwd},#{title},#{content},now())
+	</insert>
+	<update id="readnum">
+		update pageboard set readnum=readnum+1 where id=#{param1}
+	</update>
+	<select id="content" resultType="kr.co.board.BoardDTO">
+		select * from pageboard where id=#{param1}
+	</select>
+	<delete id="delete">
+		delete form pageboard where id=#{param1}
+	</delete>
+	<select id="isPwd" resultType="boolean">
+		select count(*) from pageboard where id=#{id} and pwd=#{pwd}
+	</select>
+	<update id="updateOk">
+		update pageboard set name=#{name}, title=#{title}, content=#{content}
+		where id=#{id}
+	</update>
+</mapper>

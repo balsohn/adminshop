@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/default">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<section layout:fragment="content">
+		<table>
+			<tr>
+				<td>제목 </td>
+				<td th:text="${bvo.title}"></td>
+			</tr>
+			<tr>
+				<td> 작성자 </td>
+				<td th:text="${bvo.sabun}"></td>
+			</tr>
+			<tr>
+				<td>  </td>
+				<td th:text="${bvo.title}"></td>
+			</tr>
+		</table>
+	</section>
+</body>
+</html>

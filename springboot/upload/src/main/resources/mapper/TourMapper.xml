@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.TourMapper">
+	<select id="list" resultType="com.example.demo.dto.TourDTO">
+		select * from tour order by id desc
+	</select>
+	<insert id="writeOk">
+		insert into tour (title,name,pwd,content,fname,ofname,writeday)
+		values (#{title},#{name},#{pwd},#{content},#{fname},#{ofname},now())
+	</insert>
+	<select id="content" resultType="com.example.demo.dto.TourDTO">
+		select * from tour where id=#{param1}
+	</select>
+	<select id="isPwd" resultType="boolean">
+		select count(*) from tour where id=#{id} and pwd=#{pwd}
+	</select>
+	<select id="getFname" resultType="String">
+		select fname from tour where id=#{param1}
+	</select>
+	<delete id="delete">
+		delete from tour where id=#{param1}
+	</delete>
+	<select id="getFiles" resultType="com.example.demo.dto.TourDTO">
+		select fname,ofname from tour where id=#{id}
+	</select>
+	<update id="updateOk">
+		update tour set title=#{title}, name=#{name}, content=#{content}, fname=#{fname},
+		ofname=#{ofname} where id=#{id}
+	</update>
+</mapper>

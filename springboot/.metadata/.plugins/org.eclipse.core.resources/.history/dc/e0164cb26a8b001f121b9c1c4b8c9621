@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+   header {
+     width:1000px;
+     height:50px;
+     margin:auto;
+   }
+   nav {
+     width:1000px;
+     height:60px;
+     margin:auto;
+   }
+   nav > ul {
+     padding-left:0px;
+   }
+   nav > ul > li {
+     list-style-type:none;
+     display:inline-block;
+     width:140px;
+     height:40px;
+     border:1px solid green;
+     text-align:center;
+     line-height:40px;
+     margin-left:60px;
+   }
+   nav > ul > li:last-child {
+     width:80px;
+   }
+   
+	.grp {
+		padding-left:0px;
+		position:absolute;
+		left:0px;
+		top:0px;
+	}
+   
+   footer {
+     width:1000px;
+     height:100px;
+     margin:auto;
+   }
+ </style>
+</head>
+<body>	<!-- default.html -->
+	<header>기본 내용</header>
+	<span th:text="${session.level}"></span>
+	<span th:text="${session.sabun}"></span>
+	<nav>
+		<ul>
+			<li>사원관리</li>
+			<li>부서게시판
+				<ul class="grp">
+					<li> 총무부 </li>
+					<li> 자재부 </li>
+					<li> 영업부 </li>
+					<li> 감사부 </li>
+					<li> 전체 </li>
+				</ul>
+			</li>
+			<li>출퇴근 메모</li>
+			<li>메모관리 </li>
+			<li>로그아웃 </li>
+		</ul>
+	</nav>
+	<section layout:fragment="content"></section>
+</body>
+</html>

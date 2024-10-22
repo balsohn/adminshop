@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form method="post" action="updateOk">
+	<input type="hidden" name="page" th:value="${page}">
+	<input type="hidden" name="id" th:value="${bdto.id}">
+	<input type="hidden" name="name" th:value="${bdto.name}">
+	<div>제목 : <span><input type="text" name="title" th:value="${bdto.title}"></span></div>
+	<div>내용</div>
+	<div><textarea name="content" th:utext="${bdto.content}"></textarea></div>
+	<div class="btn">
+		<a th:href="@{list(page=${page})}">목록</a>
+		<input type="submit" value="수정하기">
+	</div>
+	</form>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/default">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<section layout:fragment="content">
+		<form method="post">
+		<table>
+			<caption><h2>글쓰기</h2></caption>
+			<tr>
+				<td>제목 </td>
+				<td> <input type="text" name="title"> </td>
+			</tr>
+			<tr>
+				<td>내용</td>
+				<td> <textarea name="content"></textarea> </td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<label><input type="radio" name="grp" value="0"> 전체 게시판 </label>
+					<label th:if=""><input type="radio" name="grp" value="1"> 전체 게시판 </label>
+					<label><input type="radio" name="grp" value="2"> 전체 게시판 </label>
+					<label><input type="radio" name="grp" value="3"> 전체 게시판 </label>
+					<label><input type="radio" name="grp" value="4"> 전체 게시판 </label>
+				</td>
+			</tr>
+		</table>
+		</form>
+	</section>
+</body>
+</html>

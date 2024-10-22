@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybats-3-mapper.dtd">
+
+<mapper namespace="kr.co.boardModel3.dao.BoardDao">
+  <select id="list" resultType="kr.co.boardModel3.dto.BoardDto">
+    select * from pageboard
+    order by id desc limit #{param},10
+  </select>
+  
+  <select id="getChong" resultType="Integer">
+    select ceil(count(*)/10)  
+    from pageboard
+  </select>
+  
+  <update id="readnum">
+    update pageboard 
+    set readnum=readnum+1
+    where id=#{param}
+  </update>
+  
+  <select id="content" resultType="kr.co.boardModel3.dto.BoardDto">
+    select * from pageboard
+    where id=#{param}
+  </select>
+  
+  <select id="isPwd" resultType="Boolean">
+    select count(*) from pageboard
+    where id=#{param1} and pwd=#{param2}
+  </select>
+  
+  <delete id="delete">
+    delete from pageboard
+    where id=#{param}
+  </delete>
+  
+  <update id="updateOk" parameterType="kr.co.boardModel3.dto.BoardDto">
+    update pageboard
+    set title=#{title} , content=#{content},
+    name=#{name} 
+    where id=#{id}
+  </update>
+  
+  <insert id="writeOk" parameterType="kr.co.boardModel3.dto.BoardDto">
+    insert into pageboard(title,content,pwd,name,writeday)
+    values(#{title},#{content},#{pwd},#{name},now())
+  </insert>
+</mapper>
+
+
+
+
+
+
+
+

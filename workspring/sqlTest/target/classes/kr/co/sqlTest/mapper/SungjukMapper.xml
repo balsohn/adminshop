@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.sqlTest.mapper.SungjukMapper">
+	<select id="list" resultType="kr.co.sqlTest.dto.SungjukDTO" parameterType="String">
+		select * from sungjuk order by ${value} desc
+	</select>
+	<select id="getIphak" resultType="String">
+		select iphak from sungjuk where name=#{param}
+	</select>
+</mapper>

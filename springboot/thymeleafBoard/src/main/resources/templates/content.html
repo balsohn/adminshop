@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>	<!-- content.html -->
+	<table>
+		<tr>
+			<td>제목 </td>
+			<td th:text="${bdto.title}"/>
+		</tr>
+		<tr>
+			<td>작성자 </td>
+			<td th:text="${bdto.name}"/>
+		</tr>
+		<tr>
+			<td>작성일 </td>
+			<td th:text="${bdto.writeday}"/>
+		</tr>
+		<tr>
+			<td colspan="2">내용</td>
+		</tr>
+		<tr>
+			<td colspan="2" th:text="${bdto.content}"/>
+		</tr>
+		<tr>
+			<td colspan="2" align="center">
+				<a href="list" th:text="목록"></a>
+				<a th:href="@{delete(id=${bdto.id})}" th:text="삭제"/>
+				<a th:href="@{update(id=${bdto.id})}" th:text="수정"/>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

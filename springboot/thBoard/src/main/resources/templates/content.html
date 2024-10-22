@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	#chkForm {
+		display: none;
+	}
+</style>
+<script>
+	function chk(num) {
+		var pwd=document.getElementById("pwd");
+		var sub=document.getElementById("submit");
+		var chk=document.getElementById("chkForm");
+		
+		if(num==0) {
+			chk.style.display="block";
+			chk.action="update?page=[[${page}]]";
+			sub.value="수정하기";
+		} else {
+			chk.style.display="block";
+			chk.action="delete?page=[[${page}]]";
+			sub.value="삭제하기";
+		}
+	}
+	
+	function cancel() {
+		var chk=document.getElementById("chkForm");
+		
+		chk.style.display="none";
+	}
+</script>
+</head>
+<body>
+	<div>제목 : <span th:text="${bdto.title}"/></div>
+	<div>조회수 : <span th:text="${bdto.readnum}"/></div>
+	<div>내용</div>
+	<div th:text="${bdto.content}"></div>
+	<div class="btn">
+		<a th:href="@{list(page=${page})}">목록</a>
+		<a onclick="chk(0)">수정</a>
+		<a onclick="chk(1)">삭제</a>
+	</div>
+	<form method="post" id="chkForm">
+		<input type="hidden" name="name" th:value="${bdto.name}">
+		<input type="hidden" name="id" th:value="${bdto.id}">
+		<input type="password" name="pwd" id="pwd" placeholder="비밀번호">
+		<input type="submit" id="submit">
+		<input type="button" onclick="cancel()" value="취소">
+	</form>
+</body>
+</html>

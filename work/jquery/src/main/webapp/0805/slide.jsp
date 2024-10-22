@@ -1,0 +1,46 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+<script>
+	$(function() {
+		function chk() {
+			$('#inner').animate({
+				marginLeft:"-600px"
+			},2000,function() {
+				$('#inner').
+			})
+		}
+	})
+</script>
+<style>
+	section {position:relative; left:50%; top:200px; width:200px; height:113px; overflow: hidden; display:flex;}
+	img {width:200px; height: auto;}
+</style>
+</head>
+<body>
+<input type="button" id="btn1" value="이동">
+	<section>
+		<div id="inner">
+		<img src="1-1.jpg">
+		<img src="1-2.jpg">
+		<img src="1-3.jpg">
+		<img src="1-4.jpg">
+		<img src="1-5.jpg">
+		<img src="1-6.jpg">
+		<img src="1-7.jpg">
+		</div>
+	</section>
+</body>
+</html>
+
+
+
+
+
+
+

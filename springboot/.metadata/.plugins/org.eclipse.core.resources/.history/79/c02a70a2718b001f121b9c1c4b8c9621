@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/default">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<section layout:fragment="content">
+		<table>
+			<tr>
+				<th> 제목 </th>
+				<th> 작성자 </th>
+				<th> 작성일 </th>
+			</tr>
+			<tr th:each="content:${bvo}">
+				<td><a href="" th:text="${content.title"></a></td>
+				<td th:text="${content.name}"></td>
+			</tr>
+		</table>
+	</section>
+</body>
+</html>

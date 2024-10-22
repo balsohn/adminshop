@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body> <!-- third.html -->
+	<a href="http://www.naver.com"> 네이버 </a>
+	<!-- model에서 -->
+	<a th:href="${url}" th:text="${urlText}"></a>
+	
+	<!-- url에 get으로 넘겨야 될 값이 있을 경우 -->
+	<a th:href="${url2}+'?id='+${name}" th:text="${url2Text}"/>
+	<a th:href="@{${url2}(id=${hong})}" th:text="${url2Text}"/>
+	
+	<!-- get으로 넘길값이 3개 -->
+	<a th:href="${url2}+'?id='+${name}+'&juso='+${juso}+'&age='+${age}">3개</a>
+	<a th:href="@{${url2}(id=${name},juso=${juso},age=${age})}">3개</a>
+	
+	<!-- location을 이용하여 문서이동 -->
+	<div onclick="location='http://coupang.com'"> 쿠팡으로 </div>
+	<div th:onclick="|location='@{thirdEx(id=${name},juso=${juso},age=${age})}'|" th:text="${txt2}"></div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.server_test.mapper.TourMapper">
+	<insert id="writeOk">
+		insert into pageboard (title,content,fname)
+		values (#{title},#{content},#{fname})
+	</insert>
+	<select id="list" resultType="kr.co.server_test.dto.TourDTO">
+		select * from pageboard order by id desc limit #{index},10
+	</select>
+	<select id="getChong" resultType="int">
+		select ceil(count(*)/10) from pageboard
+	</select>
+	<select id="content" resultType="kr.co.server_test.dto.TourDTO">
+		select * from pageboard where id=#{id}
+	</select>
+	<delete id="delete">
+		delete from pageboard where id=#{id}
+	</delete>
+	<select id="getFname" resultType="string">
+		select fname from pageboard where id=#{id}
+	</select>
+	<update id="updateOk">
+		update pageboard set content=#{content}, title=#{title}, fname=#{fname}
+		where id=#{id}
+	</update>
+</mapper>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/layoutOne/default">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	section {
+		width:1000px;
+		height: 500px;
+		margin:auto;
+		background: blue;
+	}
+</style>
+</head>
+<body> <!-- index.html -->
+	<th:block layout:fragment="content">
+		<section>
+			여기는 나의 웹페이지 입니다.. 하하하!!
+		</section>
+	</th:block>
+</body>
+</html>

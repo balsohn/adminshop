@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/default">
+<head>
+<meta charset="UTF-8">
+<title>사원 관리 시스템</title>
+<style>
+/* 전체 페이지 스타일 */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+.content-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+
+h2 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+/* 테이블 스타일 */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background-color: white;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+th {
+    background-color: #3498db;
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tr:hover {
+    background-color: #f5f8fa;
+}
+
+/* 버튼 스타일 */
+.add-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #2ecc71;
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    margin-top: 30px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.add-button:hover {
+    background-color: #27ae60;
+}
+
+/* 모달 스타일 */
+.modal {
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    padding: 30px;
+    width: 400px;
+}
+
+.modal-content h3 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+/* 폼 요소 스타일 */
+select, input[type="text"], input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+#updateSawon, input[type="submit"] {
+    background-color: #3498db;
+    color: white;
+}
+
+#updateSawon:hover, input[type="submit"]:hover {
+    background-color: #2980b9;
+}
+
+#deleteSawon {
+    background-color: #e74c3c;
+    color: white;
+}
+
+#deleteSawon:hover {
+    background-color: #c0392b;
+}
+
+#closeModal, #closeUpdateModal, .cancel-btn {
+    background-color: #95a5a6;
+    color: white;
+}
+
+#closeModal:hover, #closeUpdateModal:hover, .cancel-btn:hover {
+    background-color: #7f8c8d;
+}
+
+/* 링크 스타일 */
+.sawon-link {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.sawon-link:hover {
+    text-decoration: underline;
+}
+</style>
+<script>
+	window.onload=function() {
+		dayCal();
+	}
+
+	
+	function dayCal() {
+		var year=document.getElementById("year").value;
+		var month=document.getElementById("month").value;
+		var day=document.getElementById("day");
+		
+		var chongDay=new Date(year,month,0).getDate();
+		
+		day.innerHTML="";
+		
+		for(i=1;i<=chongDay; i++) {
+			var option=document.createElement("option");
+			option.value=i;
+			option.text=i<10?'0'+i:i;
+			day.add(option);
+		}
+	}
+	
+	function addSawon(event) {
+		event.preventDefault();
+		
+		var year=document.getElementById("year").value;
+		var month=document.getElementById("month").value;
+		var day=document.getElementById("day").value;
+		var ipsa=year+"-"+month.padStart(2,"0")+"-"+day.padStart(2,"0");
+		var depart=document.getElementById("depart").value;
+		var level=document.getElementById("level").value;
+		var name=document.getElementById("name").value;
+		var phone=document.getElementById("phone").value;
+		var email=document.getElementById("email").value;
+		
+		if(!depart || !year || !month || !day || !level || !name || !phone || !email) {
+			alert("정보를 입력해주세요.");
+			return false;
+		}
+		
+		fetch(`/sawonList`,{
+			method:"POST",
+			headers:{"Content-Type":"application/json"},
+			body:JSON.stringify({
+				depart:depart,
+				level:level,
+				name:name,
+				email:email,
+				phone:phone,
+				ipsa:ipsa
+			})
+		})
+		.then(response => response.json())
+		.then(data => {
+			if(data.success) {
+				alert("사원이 성공적으로 추가 되었습니다.\n"+"사원번호 : "+data.sabun);
+				location.reload();
+			} else {
+				alert("사원 등록에 실패했습니다."  + data.message);
+			}
+		})
+		.catch(error => {
+			console.error('Error', error);
+			alert("오류발생");
+		})
+		
+	}
+	
+	
+	function chugaSawon() {
+        document.getElementById('sawonChuga').style.display = 'block';
+    }
+
+    function closeSawonChuga() {
+        document.getElementById('sawonChuga').style.display = 'none';
+    }
+    
+    function deleteSawon(sabun,id) {
+    	if(confirm("정말로 이 사원을 삭제하시겠습니까?")) {
+    		fetch(`/sawonList/${sabun}/${id}`,{
+    			method: 'DELETE',
+    		})
+    		.then(response => response.json())
+    		.then(data => {
+    			if(data.success) {
+    				alert("사원이 성공적으로 삭제되었습니다.");
+    				location.reload();
+    			} else {
+    				alert("사원삭제에 실패하였습니다. \n"+data.message);
+    			}
+    		})
+    		.catch(error => {
+    			console.error('Error',error);
+    			alert("오류가 발생했습니다.");
+    		})
+    	}
+    }
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        var actionModal = document.getElementById('actionModal');
+        var updateModal = document.getElementById('updateModal');
+
+        // 사원번호 링크에 이벤트 리스너 추가
+        document.querySelectorAll('.sawon-link').forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                var sabun = this.getAttribute('data-sabun');
+                var id = this.getAttribute('data-id');
+                document.getElementById('selectedSawonName').textContent = sabun;
+                actionModal.style.display = "block";
+
+                // 삭제 버튼에 이벤트 리스너 추가
+                document.getElementById('deleteSawon').onclick = function() {
+                    deleteSawon(sabun, id);
+                };
+
+                // 업데이트 버튼에 이벤트 리스너 추가
+                document.getElementById('updateSawon').onclick = function() {
+                    actionModal.style.display = "none";
+                    showUpdateModal(sabun, id);
+                };
+            });
+        });
+
+        // 액션 모달 닫기
+        document.getElementById('closeModal').onclick = function() {
+            actionModal.style.display = "none";
+        };
+
+        // 업데이트 모달 닫기
+        document.getElementById('closeUpdateModal').onclick = function() {
+            updateModal.style.display = "none";
+        };
+
+        // 모달 외부 클릭 시 닫기
+        window.onclick = function(event) {
+            if (event.target == actionModal) {
+                actionModal.style.display = "none";
+            }
+            if (event.target == updateModal) {
+                updateModal.style.display = "none";
+            }
+        };
+
+        // 업데이트 폼 제출 처리
+        document.getElementById('updateForm').onsubmit = function(e) {
+            e.preventDefault();
+            updateSawonInfo();
+        };
+    });
+
+    function showUpdateModal(sabun, id) {
+        // 여기서 서버로부터 사원 정보를 가져와 폼에 채웁니다.
+        fetch(`/sawonInfo/${sabun}/${id}`)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('updateSabun').value = data.sabun;
+                document.getElementById('updateId').value = data.id;
+                document.getElementById('updateDepart').value = data.depart;
+                document.getElementById('updateLevel').value = data.level;
+                document.getElementById('updateName').value = data.name;
+                document.getElementById('updatePhone').value = data.phone;
+                document.getElementById('updateEmail').value = data.email;
+                document.getElementById('updateIpsa').value = data.ipsa;
+                
+                document.getElementById('updateModal').style.display = "block";
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert("사원 정보를 불러오는 데 실패했습니다.");
+            });
+    }
+
+    function updateSawonInfo() {
+        const formData = new FormData(document.getElementById('updateForm'));
+        const sawonData = Object.fromEntries(formData.entries());
+
+        fetch('/updateSawon', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(sawonData),
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert("사원 정보가 성공적으로 업데이트되었습니다.");
+                document.getElementById('updateModal').style.display = "none";
+                location.reload(); // 페이지 새로고침
+            } else {
+                alert("사원 정보 업데이트에 실패했습니다: " + data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert("오류가 발생했습니다.");
+        });
+    }
+
+    // 기존의 deleteSawon 함수는 그대로 유지
+</script>
+</head>
+<body>
+	<section layout:fragment="content" class="content-wrapper">
+        <h2>[[${part}]] 관리</h2>
+        <table>
+            <tr>
+                <th>사원번호</th>
+                <th>이름</th>
+                <th>전화번호</th>
+                <th>이메일</th>
+                <th>입사일</th>
+                <th>등급</th>
+            </tr>
+<tr th:each="sawon:${slist}">
+    <td><a href="#" class="sawon-link" th:data-sabun="${sawon.sabun}" th:data-id="${sawon.id}" th:text="${sawon.sabun}"></a></td>
+    <td th:text="${sawon.name}"/>
+    <td th:text="${sawon.phone}"/>
+    <td th:text="${sawon.email}"/>
+    <td th:text="${sawon.ipsa}"/>
+    <td th:text="${sawon.level}"/>
+</tr>
+        </table>
+        <a href="javascript:chugaSawon()" class="add-button">사원추가</a>
+        
+        <div id="sawonChuga" style="display: none;">
+            <form onsubmit="return addSawon(event)">
+                <select name="depart" id="depart">
+                    <option value="">부서 선택</option>
+                    <option value="s01">총무부</option>
+                    <option value="s02">자재부</option>
+                    <option value="s03">영업부</option>
+                    <option value="s04">감사부</option>
+                </select>
+                <select name="level" id="level">
+                	<option value="">직급 </option>
+                    <option value="10">일반사원</option>
+                    <option value="30">주임</option>
+                    <option value="50">과장</option>
+                    <option value="70">부장</option>
+                </select>
+                <div>
+                    <select id="year" name="year">
+                        <option th:each="i : ${#numbers.sequence(#dates.year(#dates.createNow()), #dates.year(#dates.createNow())-20)}"
+                                th:value="${i}" th:text="${i}">
+                        </option>
+                    </select>
+                    <select name="month" id="month" onchange="dayCal()">
+                        <option th:each="month : ${#numbers.sequence(1, 12)}"
+                                th:value="${month}" 
+                                th:text="${#strings.prepend(month, month < 10 ? '0' : '')}">
+                        </option>
+                    </select>
+                    <select id="day" name="day"></select>
+                </div>
+                <input type="text" name="name" id="name" placeholder="이름">
+                <input type="text" name="phone" id="phone" placeholder="전화번호">
+                <input type="text" name="email" id="email" placeholder="이메일">
+                <div class="form-buttons">
+		            <input type="submit" value="사원 등록">
+		            <button type="button" onclick="closeSawonChuga()" class="cancel-btn">취소</button>
+		        </div>
+            </form>
+        </div>
+        <div id="actionModal" class="modal">
+		    <div class="modal-content">
+		        <h3>사원 관리</h3>
+		        <p>선택한 사원: <span id="selectedSawonName"></span></p>
+		        <button id="updateSawon">업데이트</button>
+		        <button id="deleteSawon">삭제</button>
+		        <button id="closeModal">닫기</button>
+		    </div>
+		</div>
+		
+		<!-- 새로운 업데이트 모달 -->
+		<div id="updateModal" class="modal">
+		    <div class="modal-content">
+		        <h3>사원 정보 업데이트</h3>
+		        <form id="updateForm">
+		            <input type="hidden" id="updateSabun" name="sabun">
+		            <input type="hidden" id="updateId" name="id">
+		            <select name="depart" id="updateDepart">
+		                <option value="">부서 선택</option>
+		                <option value="s01">총무부</option>
+		                <option value="s02">자재부</option>
+		                <option value="s03">영업부</option>
+		                <option value="s04">감사부</option>
+		            </select>
+		            <select name="level" id="updateLevel">
+		                <option value="">직급</option>
+		                <option value="10">일반사원</option>
+		                <option value="30">주임</option>
+		                <option value="50">과장</option>
+		                <option value="70">부장</option>
+		            </select>
+		            <input type="text" id="updateName" name="name" placeholder="이름">
+		            <input type="text" id="updatePhone" name="phone" placeholder="전화번호">
+		            <input type="text" id="updateEmail" name="email" placeholder="이메일">
+		            <input type="date" id="updateIpsa" name="ipsa">
+		            <button type="submit">업데이트</button>
+		            <button type="button" id="closeUpdateModal">취소</button>
+		        </form>
+		    </div>
+		</div>
+    </section>
+</body>
+</html>

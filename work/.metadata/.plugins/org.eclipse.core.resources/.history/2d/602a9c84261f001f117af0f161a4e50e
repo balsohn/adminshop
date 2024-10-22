@@ -1,0 +1,9 @@
+package F1Ranking;
+
+public class F1Select {
+
+	public static void main(String[] args) {
+
+	}
+
+}
